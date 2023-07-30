@@ -1,0 +1,10 @@
+from geopy.geocoders import ArcGIS
+import folium
+from geopy.geocoders import Nominatim
+geolocator = Nominatim(user_agent="location_details")
+location = geolocator.geocode("jaipur")
+print((location.latitude, location.longitude))
+
+map=folium.Map(location=[location.latitude, location.longitude],zoom_start=15)
+map.add_child(folium.Marker(location=[location.latitude, location.longitude],popup=location,icon=folium.Icon(color='green')))
+
